@@ -1,0 +1,20 @@
+{
+  "name": "demo-bloated-types",
+  "description": "Sample fixture mapping: reproduces a realistic long-tail taxonomy (dozens of noisy types collapsing to a canonical set) so the full reversible lifecycle can be proven end-to-end on throwaway data.",
+  "catch_all": "note",
+  "legacy_key": "legacy_type",
+  "min_cluster_size": 4,
+  "ttl_hours": 72,
+  "canonical": [
+    "person", "company", "media", "tweet", "social-digest", "analysis",
+    "atom", "concept", "source", "deal", "email", "slack", "writing",
+    "project", "note"
+  ],
+  "rules": [
+    {"match": "prefix", "from": "tweet-", "to": "tweet"},
+    {"match": "regex",  "from": "^media/.*", "to": "media"},
+    {"match": "exact",  "from": "tweet", "to": "tweet"},
+    {"match": "exact",  "from": "concept-redirect", "to": "concept"},
+    {"match": "exact",  "from": "atom-partner-link", "to": "atom"}
+  ]
+}

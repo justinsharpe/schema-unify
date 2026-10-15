@@ -1,0 +1,10 @@
+{
+  "name": "demo-source",
+  "description": "Sample mapping: fold a long tail of source labels into a catch-all 'other' bucket, stamping legacy_source for rollback.",
+  "catch_all": "other",
+  "legacy_key": "legacy_source",
+  "min_cluster_size": 100,
+  "ttl_hours": 72,
+  "canonical": ["api", "cron", "task", "manual"],
+  "rules": []
+}

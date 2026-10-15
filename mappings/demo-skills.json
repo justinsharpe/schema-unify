@@ -1,0 +1,13 @@
+{
+  "name": "demo-skills",
+  "description": "Sample mapping: fold a wide-and-shallow category taxonomy into a catch-all bucket, stamping legacy_category for rollback.",
+  "catch_all": "misc",
+  "legacy_key": "legacy_category",
+  "min_cluster_size": 2,
+  "ttl_hours": 72,
+  "canonical": ["core", "devops", "research"],
+  "rules": [
+    {"match": "exact",  "from": "core",  "to": "core"},
+    {"match": "prefix", "from": "eng-",  "to": "eng"}
+  ]
+}
