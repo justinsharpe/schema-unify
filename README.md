@@ -5,6 +5,22 @@ migration**. Fold a long tail of types into a catch-all bucket, stamp every
 moved item with its legacy type so the move can be undone, soft-delete with a
 TTL window before any purge. Stdlib-only, platform-agnostic.
 
+## Why this exists (the failure class)
+
+Taxonomies drift. A store that starts with five clean types quietly grows a
+long tail — dozens of one-off labels, near-duplicates, a `concept-redirect`
+here and a `concept-redirect-v2` there. Renaming them by hand is how you lose
+data: the moment a type is overwritten without a record of what it was, the
+rollback path is gone.
+
+This tool exists because consolidation needs to be a **migration, not a
+rewrite**: dry-run first, stamp every moved item with its legacy type, and
+soft-delete with a TTL window before anything is purged. That is the
+transferable shape — it was identified from a systematic pass over a
+large agent-skill inventory whose own library had sprawled to the point of
+*a hundred categories, most singletons*. The mechanism generalizes far beyond
+skill taxonomies.
+
 ## The three laws this tool enforces
 
 1. **DEFAULT IS DRY-RUN.** It prints exactly what it *would* change and writes
